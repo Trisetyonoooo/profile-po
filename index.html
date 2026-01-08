@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pengembangan Organisasi — UKM KSR PMI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/webp" href="assets/po.webp" />
+
+  <style>
+.hero-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Track slider */
+.slider-track {
+  display: flex;
+  width: max-content; /* sesuaikan lebar total gambar */
+  animation: scroll 50s linear infinite;
+}
+
+/* Duplikat gambar untuk efek looping halus */
+.slider-track::after {
+  content: '';
+  display: flex;
+  width: 300%; /* jumlah gambar asli x1 */
+}
+
+/* Gambar */
+.slide-item {
+  flex: 0 0 100vw; /* tiap gambar 100% lebar viewport */
+  height: 70vh;
+  object-fit: cover;
+}
+
+/* Animasi */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-300vw); /* pindah sejauh 3 gambar */
+  }
+}
+</style>
+
+</head>
+
+<body class="antialiased text-slate-900 bg-slate-50">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- BRAND -->
+      <div class="flex items-center gap-3 font-bold text-slate-800">
+        <img src="assets/po.webp" class="w-10 h-10 rounded-lg" alt="">
+        Divisi Pengembangan Organisasi
+      </div>
+
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:block">
+        <ul class="flex items-center gap-6 text-sm text-slate-600">
+          <li><a href="#profil" class="hover:text-slate-900">Profil</a></li>
+          <li><a href="#program" class="hover:text-slate-900">Program Kerja</a></li>
+          <li><a href="#details" class="hover:text-slate-900">Detail</a></li>
+          <li><a href="#keunikan" class="hover:text-slate-900">Fun Fact</a></li>
+          <li><a href="#contact" class="hover:text-slate-900">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- MOBILE BUTTON -->
+      <button onclick="toggleMenu()" class="md:hidden text-2xl text-slate-700">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/90 backdrop-blur border-t border-slate-200">
+      <nav class="px-6 py-4">
+        <ul class="flex flex-col gap-4 text-slate-700 text-base font-medium">
+          <li><a href="#profil" class="hover:text-slate-900" onclick="closeMenu()">Profil</a></li>
+          <li><a href="#program" class="hover:text-slate-900" onclick="closeMenu()">Program Kerja</a></li>
+          <li><a href="#details" class="hover:text-slate-900" onclick="closeMenu()">Detail</a></li>
+          <li><a href="#contact" class="hover:text-slate-900" onclick="closeMenu()">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <section class="hero-wrap relative">
+  <div class="relative w-full">
+    <div class="absolute inset-0">
+      <div class="slider-track">
+        <img src="assets/hero1.webp" class="slide-item object-contain bg-black">
+        <img src="assets/hero2.webp" class="slide-item object-contain bg-black">
+        <img src="assets/hero3.webp" class="slide-item object-contain bg-black">
+      </div>
+    </div>
+
+    <!-- overlay -->
+    <div class="absolute inset-0 bg-black/35"></div>
+
+
+
+        <!-- hero content -->
+        <div class="relative z-10 max-w-6xl mx-auto px-6 py-28 text-center">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-md">
+            Pengembangan Organisasi
+          </h1>
+          <p class="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+            UKM KSR PMI Telkom University Purwokerto — Program Kerja & Profil Divisi. Bergerak bersama untuk memberikan
+            dampak nyata.
+          </p>
+
+          <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="#profil"
+              class="inline-flex items-center gap-2 bg-white text-yellow-500 px-5 py-3 rounded-xl font-semibold shadow hover:translate-y-[-2px] transition">
+              <i class="fa-solid fa-users"></i> Lihat Profil
+            </a>
+            <a href="#program"
+              class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white px-5 py-3 rounded-xl hover:bg-white/20 transition">
+              <i class="fa-solid fa-list"></i> Program Kerja
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profil -->
+    <section id="profil" class="max-w-6xl mx-auto px-6 py-16">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold">Profil Keanggotaan</h2>
+        <p class="text-slate-500 mt-2">Anggota Divisi Pengembangan Organisasi</p>
+      </div>
+
+     <!-- Koordinator -->
+      <div class="flex justify-center mb-8">
+        <div class="bg-white rounded-2xl shadow-lg p-6 w-full sm:w-96 flex flex-col items-center 
+      transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03] hover:shadow-yellow-300/30">
+
+          <img src="assets/tri.webp" onclick="openModal(this.src)"
+            class="w-28 h-28 cursor-pointer rounded-full object-cover border-4 border-white shadow-md">
+          <h3 class="mt-4 font-semibold text-lg">Tri Setyono Martyantoro</h3>
+          <p class="text-sm text-slate-500">Koordinator Pengembangan Organisasi</p>
+        </div>
+      </div>
+
+
+      <!-- Grid anggota -->
+      <div class="flex flex-wrap justify-center gap-6">
+
+        <div class="bg-white rounded-2xl shadow p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 
+      flex flex-col items-center text-center
+      transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.03] hover:shadow-yellow-300/30">
+          <img src="assets/zahra.webp" onclick="openModal(this.src)"
+            class="w-20 h-20 cursor-pointer rounded-full object-cover border-4 border-white shadow-sm">
+          <h5 class="mt-3 font-medium">Zahra Dwi Andita Rahma</h5>
+          <p class="text-sm text-slate-500">Staff Pengembangan Organisasi</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 
+      flex flex-col items-center text-center
+      transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.03] hover:shadow-yellow-300/30">
+          <img src="assets/josi.webp" onclick="openModal(this.src)"
+            class="w-20 h-20 cursor-pointer rounded-full object-cover border-4 border-white shadow-sm">
+          <h5 class="mt-3 font-medium">Josia Christian</h5>
+          <p class="text-sm text-slate-500">Staff Pengembangan Organisasi</p>
+        </div>
+
+      </div>
+    </section>
+
+
+  <section id="program" class="max-w-6xl mx-auto px-6 pb-20">
+  <!-- Judul -->
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-slate-800">Program Kerja</h2>
+    <p class="text-slate-500 mt-2">
+      Ringkasan program kerja Divisi Pengembangan Organisasi
+    </p>
+  </div>
+
+  <!-- ================= BARIS ATAS (4 PROKER) ================= -->
+  <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+    <!-- Pengenalan Divisi -->
+    <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-center">Pengenalan Divisi (Internship)</h3>
+      <p class="mt-3 text-sm text-slate-600 text-center">
+        Memberikan gambaran menyeluruh mengenai tugas, fungsi, dan ruang lingkup setiap divisi di KSR PMI Unit Telkom University Purwokerto.
+      </p>
+      <div class="mt-auto pt-6 text-center">
+        <button onclick="goToDetail('divisi')"
+          class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+          Lihat Detail
+        </button>
+      </div>
+    </article>
+
+    <!-- Upgrading -->
+    <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-center">Upgrading</h3>
+      <p class="mt-3 text-sm text-slate-600 text-center">
+        Meningkatkan kapasitas, keterampilan, dan pemahaman anggota KSR PMI Unit Telkom University Purwokerto dalam bidang kepalangmerahan, kepemimpinan, dan organisasi.
+      </p>
+      <div class="mt-auto pt-6 text-center">
+        <button onclick="goToDetail('upgrading')"
+        class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+        Lihat Detail
+        </button>
+      </div>
+    </article>
+
+    <!-- Fun Route -->
+    <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+        <i class="fa-solid fa-people-group"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-center">Fun Route</h3>
+      <p class="mt-3 text-sm text-slate-600 text-center">
+        Kegiatan rekreatif yang dirancang untuk mempererat kebersamaan dan kekompakan anggota KSR PMI Unit Telkom University Purwokerto.
+      </p>
+      <div class="mt-auto pt-6 text-center">
+        <button onclick="goToDetail('fun')"
+          class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+          Lihat Detail
+        </button>
+      </div>
+    </article>
+
+    <!-- Open Recruitment -->
+    <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+      transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+        <i class="fa-solid fa-gift"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-center">Open Recruitment</h3>
+      <p class="mt-3 text-sm text-slate-600 text-center">
+        Menambah anggota baru untuk periode kepengurusan berikutnya sekaligus memperkenalkan UKM KSR PMI Unit Telkom University Purwokerto.
+      </p>
+      <div class="mt-auto pt-6 text-center">
+        <button onclick="goToDetail('oprec')"
+          class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+          Lihat Detail
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ================= BARIS BAWAH (3 PROKER TENGAH) ================= -->
+  <div class="mt-10 flex justify-center">
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-5xl w-full">
+
+      <!-- Talent Promosi -->
+      <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+        transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+          <i class="fa-solid fa-book"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-center">Talent Promosi Todays</h3>
+        <p class="mt-3 text-sm text-slate-600 text-center">
+          Meningkatkan awareness, minat, dan antusiasme mahasiswa baru untuk mengenal dan bergabung dengan KSR PMI.
+        </p>
+        <div class="mt-auto pt-6 text-center">
+          <button onclick="goToDetail('talent')"
+            class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+            Lihat Detail
+          </button>
+        </div>
+      </article>
+
+      <!-- Dies Natalis -->
+      <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+        transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-center">Dies Natalis</h3>
+        <p class="mt-3 text-sm text-slate-600 text-center">
+          Serangkaian kegiatan yang dilaksanakan dalam rangka memperingati hari jadi KSR Unit Telkom University Purwokerto.
+        </p>
+        <div class="mt-auto pt-6 text-center">
+          <button onclick="goToDetail('diesnat')"
+            class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+            Lihat Detail
+          </button>
+        </div>
+      </article>
+
+      <!-- Sertijab -->
+      <article class="group bg-white rounded-2xl p-6 border shadow flex flex-col min-h-[300px]
+        transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/30">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 text-yellow-400 text-2xl flex items-center justify-center">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-center">Sertijab</h3>
+        <p class="mt-3 text-sm text-slate-600 text-center">
+          Penyerahan kepengurusan ke periode berikutnya menjadi Relawan KSR PMI Unit Telkom University Purwokerto.
+        </p>
+        <div class="mt-auto pt-6 text-center">
+          <button onclick="goToDetail('sertijab')"
+            class="px-4 py-2 rounded-xl border border-yellow-400 text-yellow-400 hover:bg-yellow-400/20">
+            Lihat Detail
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Details -->
+    <section id="details" class="max-w-6xl mx-auto px-6 pb-16">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold">Detail Program Kerja</h2>
+        <p class="text-slate-500 mt-2">Penjelasan lengkap tiap program & penanggung jawab</p>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <article id="divisi" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Pengenalan Divisi (Internship)</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Memberikan gambaran menyeluruh mengenai tugas, fungsi, dan ruang lingkup setiap divisi di KSR PMI Unit Telkom University Purwokerto.</p>
+            <p class="mt-3 text-slate-600"> Merupakan program kerja baru yang baru diadakan oleh Divisi Pengembangan Organisasi, karena yang sebelumnya diadakan bersamaan dengan Upgrading</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Tri Setyono Martyantoro</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/internship.webp" alt="Donor" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="upgrading" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Upgrading KSR PMI Unit TUP</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Meningkatkan kapasitas, keterampilan, dan pemahaman anggota KSR PMI Unit Telkom University Purwokerto dalam bidang kepalangmerahan, kepemimpinan, dan organisasi.</p>
+            <p class="mt-3 text-slate-600">Kegiatan untuk mengakrabkan pengurus dan anggota KSR periode 2025/2026.</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Zahra Dwi Andita Rahma</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/upgrading.webp" alt="Pengabdian" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="fun" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Fun Route</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Refreshing seluruh anggota dan pengurus KSR PMI Unit Telkom University Purwokerto</p>
+            <p class="mt-3 text-slate-600"> Program kerja yang diadakan untuk melepas penat selurus anggota dan pengurus KSR PMI Unit Telkom University Purwokerto yang akan diadakan diluar kampus.</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Josia Christian</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/funroute.webp" alt="Pengabdian" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="oprec" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Open Recruitment Anggota</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Menambah anggota baru untuk periode kepengurusan berikutnya, sekaligus memperkenalkan kepada anggota baru terkait UKM KSR PMI Unit Telkom University Purwokerto</p>
+            <p class="mt-3 text-slate-600">Oprec Anggota Baru KSR PMI Unit IT Telkom Purwokerto adalah program rekrutmen untuk mencari mahasiswa  yang berminat dalam kegiatan kepalangmerahan dan kerelawanan.</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Tri Setyono Martyantoro</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/oprec.webp" alt="Jumat Berbagi" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="talent" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Talent Promosi Todays</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Memperkenalkan KSR PMI Unit Telkom University Purwokerto kepada peserta TODAYS</p>
+            <p class="mt-3 text-slate-600">Event gabungan dengan divisi KWU untuk meningkatkan awareness, minat, dan antusiasme mahasiswa baru untuk mengenal dan bergabung dengan KSR PMI</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Zahra Dwi Andita Rahma</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/talent.webp" alt="Mengajar" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="diesnat" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Dies Natalis KSR PMI Unit TUP</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Kegiatan yang dilaksanakan dalam rangka memperingati hari jadi KSR Unit Telkom University Purwokerto.</p>
+            <p class="mt-3 text-slate-600">Dies Natalis KSR PMI Unit TUP adalah perayaan ulang tahun organisasi, mempererat kebersamaan, dan memberikan apresiasi  kepada pengurus, anggota, maupun para alumni.</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Tri Setyono Martyantoro</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/diesnat.webp" alt="Forum Ketua" class="w-full h-full object-cover">
+          </div>
+        </article>
+
+        <article id="sertijab" class="bg-white rounded-2xl shadow p-6 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-2xl font-semibold">Sertijab KSR PMI Unit TUP</h3>
+            <p class="text-sm text-slate-500 mt-2"><strong>Tujuan:</strong> Penyerahan kepengurusan periode berikutnya bertujuan untuk melaksanakan proses regenerasi kepemimpinan KSR PMI.</p>
+            <p class="mt-3 text-slate-600">Serah Terima Jabatan (Sertijab) KSR PMI IT Telkom Purwokerto adalah kegiatan formal yang menandai pergantian kepengurusan dalam organisasi.</p>
+            <p class="mt-3"><strong>Penanggung Jawab (PIC):</strong> Tri Setyono Martyantoro</p>
+          </div>
+          <div class="h-56 rounded-lg overflow-hidden">
+            <img src="assets/sertijab.webp" alt="Forum Ketua" class="w-full h-full object-cover">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Keunikan -->
+    <section id="keunikan" class="bg-gray-50 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">Fun Fact Divisi PO</h2>
+          <p class="text-slate-500 mt-2">Gambaran singkat mengenai kebiasaan di Divisi PO.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mx-auto">
+              <i class="fa-solid fa-hand-holding-heart text-blue-500 text-xl"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-center">Tidak Berlebihan</h3>
+            <nav class="mt-2 text-slate-600 text-center">
+              <ul>
+                <li>Prokernya dikit kok</li>
+                <li>Cuma Tujuh</li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="w-14 h-14 bg-green-50 rounded-lg flex items-center justify-center mx-auto">
+              <i class="fa-solid fa-seedling text-green-500 text-xl"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-center">Seru</h3>
+            <nav class="mt-2 text-slate-600 text-center">
+              <ul>
+                <li>Prokernya seru - seru</li>
+                <li>Banyak mainnya</li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="w-14 h-14 bg-purple-50 rounded-lg flex items-center justify-center mx-auto">
+              <i class="fa-solid fa-lightbulb text-purple-500 text-xl"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-center">Nyantai</h3>
+            <nav class="mt-2 text-slate-600 text-center">
+              <ul>
+                <li>Santai di awal</li>
+                <li>Sibuk di akhir</li>
+                <li></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
+      <div class="text-center mb-6">
+        <h2 class="text-3xl font-bold">Contact</h2>
+        <p class="text-slate-500 mt-2">Hubungi kami untuk informasi event atau kolaborasi.</p>
+      </div>
+
+      <div class="flex justify-center">
+        <div class="bg-white rounded-2xl shadow p-6 w-full sm:w-3/4 lg:w-2/3 text-center">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-instagram text-2xl text-pink-600"></i>
+              <div class="text-left">
+                <div class="text-sm font-medium">Instagram</div>
+                <a href="https://www.instagram.com/ksr.telupwt/" class="text-sky-600">@ksr.telupwt</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-whatsapp text-2xl text-green-600"></i>
+              <div class="text-left">
+                <div class="text-sm font-medium">Whatsapp</div>
+                <a href="https://wa.me/6285717682120" class="text-sky-600">0857-1768-2120</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-2xl text-slate-700"></i>
+              <div class="text-left">
+                <div class="text-sm font-medium">Email</div>
+                <a href="mailto:departemensosial@example.com" class="text-sky-600">ksrpmitup.2026@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-500 mt-6">Untuk kerja sama event, donasi, atau partisipasi program — langsung
+            hubungi kami lewat salah satu kontak di atas.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-100">
+      <div class="max-w-6xl mx-auto px-6 py-8 text-center text-sm text-slate-500">
+        &copy; 2026 Divisi Pengembangan Organisasi — UKM KSR PMI Unit Telkom University Purwokerto. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+  <!-- IMAGE MODAL -->
+  <div id="imgModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-[999] 
+            flex items-center justify-center">
+
+    <div class="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+
+      <img id="modalImage" class="max-h-[85vh] max-w-[85vw] rounded-2xl shadow-2xl object-contain">
+
+      <!-- CLOSE BUTTON -->
+      <button onclick="closeModal()" class="absolute -top-4 -right-4 bg-white text-black w-10 h-10 rounded-full 
+             shadow flex items-center justify-center text-xl hover:scale-110 transition">
+        ×
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- SCRIPTS -->
+  <script>
+    // simple reveal (IntersectionObserver) for .reveal elements
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('opacity-100', 'translate-y-0');
+          e.target.classList.remove('opacity-0', 'translate-y-6');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-6', 'transition', 'duration-600');
+      io.observe(el);
+    });
+
+    // Smooth scrolling for navbar links
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetID = this.getAttribute('href');
+        const targetEl = document.querySelector(targetID);
+
+        if (targetEl) {
+          targetEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+
+    // scroll to detail and highlight
+    function goToDetail(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.classList.add('ring', 'ring-sky-300');
+      setTimeout(() => el.classList.remove('ring', 'ring-sky-300'), 900);
+    }
+
+    // Pause slider animation on hover / touch
+    const track = document.querySelector('.slider-track');
+    if (track) {
+      ['mouseenter', 'focusin'].forEach(ev => {
+        track.addEventListener(ev, () => track.style.animationPlayState = 'paused');
+      });
+      ['mouseleave', 'focusout'].forEach(ev => {
+        track.addEventListener(ev, () => track.style.animationPlayState = 'running');
+      });
+
+      // add simple swipe support for mobile: stop animation while swiping
+      let startX = 0;
+      track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        track.style.animationPlayState = 'paused';
+      }, { passive: true });
+      track.addEventListener('touchend', e => {
+        track.style.animationPlayState = 'running';
+      });
+    }
+
+    // Fix for full-width hero: recalc duplicate width to be exactly 100vw each on resize
+    function setSlideWidths() {
+      document.querySelectorAll('.slide-item').forEach(img => {
+        img.style.width = window.innerWidth + 'px';
+      });
+    }
+    setSlideWidths();
+    window.addEventListener('resize', setSlideWidths);
+
+    function openModal(src) {
+      document.getElementById("modalImage").src = src;
+      document.getElementById("imgModal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+      document.getElementById("imgModal").classList.add("hidden");
+    }
+
+    document.getElementById("imgModal").addEventListener("click", (e) => {
+      if (e.target.id === "imgModal") closeModal();
+    });
+
+
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    function closeMenu() {
+      document.getElementById("mobileMenu").classList.add("hidden");
+    }
+
+    // Smooth Scroll for all menu links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
+
+    function closeMenu() {
+      document.getElementById("mobileMenu").classList.add("hidden");
+    }
+
+    // Smooth Scroll for all menu links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+
+  </script>
+</body>
+
+</html>
